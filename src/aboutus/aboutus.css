@@ -1,0 +1,225 @@
+.history{
+    display: flex;
+    width: 75%;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+
+}
+
+.history-info{
+    width: 50%;
+    padding: 10px 20px;
+}
+.history-info p{
+    color: rgba(0, 0, 0, 0.837);
+    font-size: small;
+    line-height: 25px;
+    padding: 10px 0;
+}
+
+.history-info h2{
+    font-size:xx-large;
+}
+.history-img{
+    display: flex;
+    gap: 10px;
+}
+
+.history img{
+    width: 230px;
+}
+
+.history ul{
+    display: flex;
+    font-size: 0.8em;
+   justify-content: space-between;
+    list-style: none;
+}
+
+.history li{
+    display: flex;
+    font-weight: bold;
+    
+}
+.history  .navicon
+{
+    font-size: 1.2em;
+    transition: all 0.2s ease;
+
+}
+.history ul li:hover .navicon {
+transform: scale(1.2);
+}
+.m{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 10px;
+}
+
+.history.history-img.m  {
+ width: 30%;
+
+}
+
+.m img{
+    width: 150px;
+
+}
+.history.mission .history-info{
+    width: 70%;
+     
+}
+.history.mission .history-info ul{
+    display: grid;
+     grid-template-columns: repeat(2,1fr);
+}
+
+.history.mission .history-info ul .navicon{
+    background-color: rgb(220, 17, 17);
+    color: white;
+    font-size: 2rem;
+    padding: 5px;
+}
+.history.mission .history-info ul li{
+    gap :10px;
+    padding: 10px;
+}
+.history.mission .history-info ul li p{
+    color: rgba(0, 0, 0, 0.282);
+    font-size: small;
+    line-height: 20px;
+    padding: 0;
+}
+
+.hiring{
+    background-color: #1D1D1D;
+    display: flex;
+    justify-content: center;
+     align-items: center;
+     height: 180px;
+    
+    padding: 10px;
+}
+
+.hiring .consult-btn {
+background-color: transparent;
+
+}
+.hiring-info{
+    width: 50%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.hiring-info h3{
+    color: white;
+    font-size: x-large;
+}
+.hiring-info h3 b{
+    color:  rgb(236, 27, 27);
+}
+.hiring-info p{
+    color: white;
+    padding-top: 5px;
+    font-size: 0.8rem;
+}
+
+.hiring .consult-btn button{
+    background: linear-gradient( to top , rgb(236, 27, 27) 50%,white 50%);
+    background-size: 100% 200%;
+}
+
+.hiring .consult-btn button:hover{
+    background-position: bottom;
+    color: white;
+}
+
+
+
+.span-closed {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  display: block;
+  padding: 0 15px;
+  border: 1px solid  rgb(29 29 29 / .2);
+  line-height: 1.8;
+  font-size: 0.8rem;
+  color: #1D1D1D;
+  transition:
+    max-height 0.5s ease,
+    opacity 0.4s ease,
+    padding 0.4s ease;
+}
+
+
+.span-open {
+  display: block;
+  max-height: 200px;  
+  opacity: 1;
+  padding: 10px 15px;
+  border: 1px solid  rgb(29 29 29 / .2);
+  line-height: 1.8;
+  font-size: 0.8rem;
+  color: #1D1D1D;
+  transition:
+    max-height 0.5s ease,
+    opacity 0.4s ease,
+    padding 0.4s ease;
+}
+
+
+
+.span-open-li,
+.span-closed-li {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.span-open-li {
+  background: red;
+  color: white;
+}
+
+.span-closed-li {
+  font-size: 0.8rem;
+   background-color: rgb(29 29 29 / .06);
+   color: rgb(29 29 29 / .7);
+   
+}
+
+.span-closed-li:hover {
+  background: #e6e6e6;
+}
+
+
+.info-drop li{
+    padding: 10px;
+    border: 1px solid  rgb(29 29 29 / .2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+} 
+
+.about-info{
+    width: 60%;
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    padding: 60px 0;
+    gap: 70px;
+   
+}
+.about-info img{
+    width: 300px;
+}
+
+

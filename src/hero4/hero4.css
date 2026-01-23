@@ -1,0 +1,42 @@
+
+*{
+    padding: 0;
+    margin: 0;
+}
+.heroshop{
+position: relative;
+margin-top: -40px;
+height: 350px;
+z-index: -1;
+}
+/* .heroshop{
+    position: relative;
+    width: 100%;
+     height: 300px;
+} */
+.heroshop img{
+    position: absolute;
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+    z-index: -1;
+}
+.heroshopcontent{
+    z-index: 1;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.heroshopcontent h4{
+    font-size: 2rem;
+}
+.heroshopsub{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    text-align: center;
+    
+}

@@ -1,0 +1,46 @@
+.stats-cont{
+    display: flex;
+    width:90%;
+    background-color: white;
+    margin: 0 auto;
+    margin-top: -70px;
+
+}
+.left-stats{
+
+   background-color: red;
+   padding: 40px;
+}
+.left-stats h4, .left-stats h1{
+    text-align: center;
+    color: white;
+
+}
+
+.stats-sections{
+    text-align: center;
+    width: 200px; 
+    
+}
+.stats-sections span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    
+}
+
+.all{
+    display: flex;
+    justify-content: center ;
+    align-items: center;
+    width: 100%;
+  
+   
+    
+ 
+}
+.count{
+    font-size: 70px;
+  
+}

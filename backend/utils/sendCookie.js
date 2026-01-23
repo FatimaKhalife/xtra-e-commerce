@@ -1,0 +1,12 @@
+export const sendAuthCookie = (res, token, remember = false) => {
+  const maxAge = remember
+    ? 30 * 24 * 60 * 60 * 1000
+    : 2 * 60 * 60 * 1000;
+
+  res.cookie("token", token, {
+    httpOnly: true,      
+    secure: false,      
+    sameSite: "lax",    
+    maxAge,
+  });
+};

@@ -1,0 +1,264 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+   
+}
+
+
+header{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 0;
+}
+.container{
+    width: 70%;
+}
+.info{
+   display: flex;
+   justify-content: flex-end;
+   align-items: center;
+   gap: 10px;
+   padding: 20px  ;
+}
+.navimg img{
+    width: 200px;
+    height: auto;
+}
+.navimg img{
+    display: flex;
+    justify-content: center; 
+    padding: 20px;
+
+}
+
+nav ul{
+    display: flex ;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+nav li{
+    list-style: none;
+    font-size: 0.85em;
+
+}
+nav a {
+  text-decoration: none;
+  color: rgb(254, 242, 242);
+  position: relative;
+  padding: 20px 14px;
+  font-size: larger;
+  display: inline-flex;        
+  align-items: center;          
+  justify-content: center;      
+  gap: 5px;                      
+}
+
+nav a::before{
+    content: "";
+    position: absolute;
+    background-color: black;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 4px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+nav a:hover::before{
+transform: scaleX(1);
+
+}
+
+nav{
+    position: relative;
+    background: none;
+    width: 100%;
+}
+nav::before {
+    content: "";
+    position: absolute;
+    background-color: red;
+    width: 100%;
+    inset: 0;
+    z-index: -1;
+    clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);
+
+}
+.dropdown-menu a::before {
+  content: none;
+}
+nav a.icon-link::before {
+  content: none;
+}
+
+.dropdown-menu{
+    display: none;
+    position: absolute;
+    top: 100%;
+    padding: 10px;
+    background-color: rgb(28, 19, 19);  
+
+}
+.dropdown:hover .dropdown-menu{
+    display: block;
+    color: black;
+}
+.dropdown-menu a{
+    color: rgb(191, 191, 191);
+}
+.dropdown-menu a:hover {
+color: rgb(255, 255, 255);
+}
+.icon2{
+    color: white;
+    font-size: larger;
+    padding-right: 10px;
+}
+.navicon{
+    color: red;
+}
+.icon3{
+    font-size: smaller;
+}
+.icon4{
+    background-color: red;
+    color: white;
+    padding: 5px;
+    border-radius: 50%;
+}
+
+header p{
+     color: grey;
+}
+.search {
+ background-color: rgba(12, 12, 12, 0.849);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  inset: 0;
+
+
+}
+.search input{
+    outline: 0;
+    border: 0;
+    font-size: 1.5rem;
+    width: 500px;
+    color:white;
+    padding: 20px;
+    background-color: transparent;
+
+
+}
+.searchcont{
+    border: 1px solid rgb(217, 15, 15);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    z-index: 99;
+    padding-right:10px;
+
+}
+.searchicon{
+color:  rgb(217, 15, 15);
+  font-size:2rem;
+}
+.search .close {
+  color: white !important;
+  position: absolute;
+  top: 30px;
+  right:30px;
+  font-size: 3rem;
+
+}
+
+
+.rightnav{
+    background-color:white;
+    position: absolute;
+    position: fixed;
+    width: 300px;
+    padding: 20px;
+    position: relative;
+    
+}
+
+.rightnavcont{
+  background-color: rgba(12, 12, 12, 0.849);
+  display: flex;
+  justify-content: flex-end;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+}
+.rightnav h3 {
+background-color: red;
+color: white;
+padding: 10px;
+}
+
+.rightnav  li{
+  list-style: none;
+  padding: 10px;
+}
+
+.col1{
+    padding:20px 5px;
+}
+
+.rightnav .col1 a{
+text-decoration: none;
+color: black;
+display: flex;
+align-items: center;
+gap: 5px;
+
+}
+.close2{
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: -40px;
+    color: white;
+    font-size: 2rem;
+}
+.rightnav li:hover a{
+    color: red;
+}
+.rightnav li:hover .icon4{
+background-color: black;
+}
+
+.rightnav .rightimg{
+    padding: 0;
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.rightnav img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.rightimg  a{
+text-decoration: none;
+color: black;
+display: flex;
+align-items: center;
+}
+.imgnav{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 10px;
+    width: 100%;
+    padding: 20px 0;
+
+}

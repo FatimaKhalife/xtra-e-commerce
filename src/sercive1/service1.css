@@ -1,0 +1,68 @@
+
+
+.container-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    text-align: center;
+    gap: 1rem;
+   
+
+}
+.service{
+    height: 450px;
+
+   
+}
+.content{
+    color: white;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%,-50%);
+    overflow: hidden;
+    transition: transform 0.4s ease;
+}
+.service-img{
+   width: 280px;
+    
+}
+.try{
+    position: relative;
+}
+
+.try:hover .content, .try:hover .service-icon {
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+
+.service-icon{
+    background-color: red;
+    width: 100px;
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translate(-50%,-50%);
+    transition: transform 0.4s ease;;
+   
+   
+}
+.btn{
+    background: linear-gradient(to top, red 50%, black 50%);
+    background-size: 100% 200%;
+    background-position: top;
+    cursor: pointer;
+    color: white;
+    border: none;
+    padding: 15px 10px;
+    position: absolute;
+    left: 50%;
+    font-size: 1rem;
+    transform: translate(-50%);
+    transition: background-position 0.4s ease, color 0.4s ease;
+   
+}
+
+.btn:hover{
+    background-position: bottom;
+}

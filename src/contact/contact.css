@@ -1,0 +1,35 @@
+.contact-us .navicon {
+    background-color: red;
+    color: white;
+    padding: 20px;
+    font-size: 40px;
+
+}
+
+.contact-us {
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+
+}
+
+.contactus-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+
+}
+
+.contactus-info p {
+    padding: 10px 0;
+    font-size: 14px;
+    color: #666666;
+
+}
+
+.contactus-info h3 {
+    color: #1d1d1d;
+}

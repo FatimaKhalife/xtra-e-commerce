@@ -1,0 +1,59 @@
+.partner-cont{
+  display: flex;
+  margin: 0 auto;
+  margin-top: -70px;
+  width: 70%;
+  background-color: white;
+
+  padding: 40px;
+
+}
+.partner-info{
+    align-content: center;  
+    width: 50%;
+
+}
+
+.partner-info h3{
+    font-size: 30px;
+    padding-bottom: 25px;
+
+}
+.partner-info p{
+    font-size: 18px;
+    color: rgb(162, 162, 162);
+      padding-bottom: 25px;
+      line-height: 1.8;
+
+}
+.partner-button{
+    background: linear-gradient(to top, red 50%,transparent 50%);
+    background-size: 100% 200%;
+    background-position: top;
+    color: red;
+    border: 1px solid red;
+    padding: 15px 20px;
+    transition: background-position 0.3s ease , color 0.3s ease;
+    
+}
+.partner-button:hover{
+      background-position: bottom;
+      color: white;
+}
+
+.partner-img{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 10px;
+}
+.partner-img img{
+    width: 240px;
+  transition: filter 0.35s ease, opacity 0.35s ease;
+  opacity: 0.6;
+
+  
+
+}
+.partner-img img:hover{
+    opacity: 1;
+}

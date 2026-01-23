@@ -1,0 +1,150 @@
+
+
+.container-grid2{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+     gap: 0;
+     height: 800px;
+   
+  
+}
+.details{
+    position: relative;
+    overflow: hidden;
+    height:100% ;
+  
+}
+.details::after{
+    content:"";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.585);
+    transition: background-color 0.3s ease;
+    z-index: 5;
+}
+.details.odd:hover::after  {
+      background-color: transparent;   
+}
+.details.even:hover::after  {
+      background-color: transparent;   
+}
+.details.odd:hover h2 ,.details.odd:hover p,.details.even:hover h2 ,.details.even:hover p   {
+      color: white;
+    
+}
+
+.details.odd::after{
+    background-color: rgba(255, 255, 255, 255);
+
+}
+.details.odd a {
+    display: none;
+}
+.details.odd:hover a {
+    display: inline;
+    color: rgb(210, 210, 210);
+}
+
+.details.even::before{
+    content: "";
+    position: absolute;
+    top: -30%;
+    left: 90%;
+    width:30%;
+    height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.331),
+    transparent
+  );
+  transform: rotate(-45deg);
+  transition: all 0.3s ease;
+  opacity: 0;
+}
+
+.details.even:hover::before {
+  animation: shine 0.5s forwards;
+}
+@keyframes shine {
+  0% {
+    left: -150%;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    left: 250%;
+    opacity: 0;
+  }
+}
+.details-content{
+    position: absolute;
+    /* border: 2px solid rgb(220, 6, 6); */
+    height: 70%;
+    width: 80%;
+    top:30px;
+    left: 30px;
+    z-index: 10;
+    color: rgb(0, 0, 0);
+ 
+    /* display: flex;
+    flex-direction:column;
+    justify-content: space-between; */
+
+}
+
+.details-content img{
+    height: 60px;
+    width: 60px;
+    background-color: red;
+    
+}
+.detail-container{
+   display: flex;
+   
+
+}
+.left-img{
+    position: relative;
+width: 35%;
+    
+}
+.left-img p{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+   color: white;
+   font-size: 40px;
+   text-align: center;
+}
+.left-img img{
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+    object-position: left; 
+
+}
+.container-grid2 {
+  margin: 0;
+  padding: 0;
+}
+.details-content h2,
+.details-content p {
+  margin: 40px 0;
+  padding: 0;
+}
+a{
+   text-decoration: none; 
+}
+.details-content a{
+    display: flex;
+    align-items: center;
+  
+    color: rgb(67, 66, 66);
+}
