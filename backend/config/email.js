@@ -7,3 +7,13 @@ export const transporter = nodemailer.createTransport({
         pass: process.env.EMAIL_PASS,
     },
 });
+
+export const sendMail = async ({ to, subject, text }) => {
+
+  await transporter.sendMail({
+    from: `"Contact Form" <${process.env.EMAIL_USER}>`,
+    to: to,
+    subject,
+    text
+  });
+};

@@ -1,8 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import Home from "./home.tsx";
-import Shop from "./shop.tsx";
+
 import App from "./App.tsx";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 

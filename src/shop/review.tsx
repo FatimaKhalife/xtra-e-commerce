@@ -1,7 +1,7 @@
 import "./detail.css";
 import { useEffect, useState, type FormEvent } from "react";
 import axios from "axios";
-import { PiKeyReturnThin } from "react-icons/pi";
+
 import { FaRegStar, FaStar } from "react-icons/fa";
 
 interface Review {

@@ -4,8 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { CiHeart } from "react-icons/ci";
 import { PiArrowBendDoubleUpRightBold } from "react-icons/pi";
 import { CgSearch } from "react-icons/cg";
-import { FaArrowRightLong } from "react-icons/fa6";
-import { FaArrowLeftLong } from "react-icons/fa6";
+
 import { RiShoppingCartLine } from "react-icons/ri";
 import { MdArrowDropDown } from "react-icons/md";
 import { Link } from "react-router-dom";

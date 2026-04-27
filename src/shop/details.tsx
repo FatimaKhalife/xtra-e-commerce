@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import products from "./products";
+
 import Nav from "../nav/nav";
 import Footer from "../footer/footer";
 import Heroshop from "../hero4/hero4";
@@ -13,7 +13,7 @@ import { useEffect } from "react";
 import { PiArrowBendDoubleUpRightBold } from "react-icons/pi";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
-import { DiVim } from "react-icons/di";
+
 import Review from "./review";
 
 type Product = {

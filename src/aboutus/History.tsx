@@ -1,7 +1,5 @@
 import "./aboutus.css";
-import { useNavigate } from "react-router-dom";
-import { useEffect, useState, type FormEvent } from "react";
-import axios from "axios";
+
 import { PiParallelogramFill } from "react-icons/pi";
 import { FiCheckCircle } from "react-icons/fi";
 import "../footer/footer.css"

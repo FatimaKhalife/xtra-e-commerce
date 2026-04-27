@@ -3,18 +3,18 @@ import { PiParallelogramFill } from "react-icons/pi";
 import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 import './hero3.css'
-import { DiVim } from "react-icons/di";
+
 interface hero2props{
     title: string;
     subtitle: string;
     slide: boolean;
 }
-const images = [
-  '	https://xtratheme.com/elementor/factory/wp-content/uploads/sites/8/2019/09/f1.jpg',
-  '	https://xtratheme.com/elementor/factory/wp-content/uploads/sites/8/2019/09/f2.jpg',
-  '	https://xtratheme.com/elementor/factory/wp-content/uploads/sites/8/2019/09/f8.jpg',
-  'https://xtratheme.com/elementor/factory/wp-content/uploads/sites/8/2019/09/f7.jpg'
-]
+// const images = [
+//   '	https://xtratheme.com/elementor/factory/wp-content/uploads/sites/8/2019/09/f1.jpg',
+//   '	https://xtratheme.com/elementor/factory/wp-content/uploads/sites/8/2019/09/f2.jpg',
+//   '	https://xtratheme.com/elementor/factory/wp-content/uploads/sites/8/2019/09/f8.jpg',
+//   'https://xtratheme.com/elementor/factory/wp-content/uploads/sites/8/2019/09/f7.jpg'
+// ]
 const projects=[
   {
     title:"INDUSTRIAL",

@@ -1,8 +1,8 @@
 import "./aboutus.css";
 
-import React, { useState, useEffect, useRef } from "react";
+
 import { FaPlus } from "react-icons/fa";
-import { FiCheckCircle } from "react-icons/fi";
+
 import Hero2 from "../hero2/hero2";
 import "../coutup/countup.css"
 import { Counter } from "../coutup/countup";

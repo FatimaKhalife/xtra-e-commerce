@@ -1,11 +1,9 @@
 
-import { useState } from "react";
-
 import { MdDelete } from "react-icons/md";
 import { FaPlus } from "react-icons/fa";
 import { FaMinus } from "react-icons/fa";
 import "./Cart.css";
-import Shop1 from "../shop/shop.tsx";
+
 
 type CartItem = {
     id: number;

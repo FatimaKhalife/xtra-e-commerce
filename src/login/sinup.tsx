@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./signup.css";
 import "../hero2/hero2.css";
 import GoogleLoginButtun from "./googlebuttun";
@@ -46,7 +46,7 @@ export default function Signup() {
       }
 
       setError("Check your email to verify your account.")
-      // window.location.href = "/login";
+      window.location.href = "/login";
     } catch (err) {
       setLoading(false);
       setError("Network error. Please try again.");

@@ -1,5 +1,6 @@
 
 import { dbPool } from "../config/db.js";
+import { sendMail } from "../config/email.js";
 
 export const Contactus = async (req, res) => {
     try {
@@ -14,6 +15,20 @@ export const Contactus = async (req, res) => {
                 formData.subject,
                 formData.department,
                 formData.message]);
+
+        await sendMail({
+            subject: `${formData.subject}`,
+            text: `
+            Name: ${formData.name}
+            Email: ${formData.email}
+            Department: ${formData.department}
+
+            Message:
+            ${formData.message}
+                `,
+            to: `${formData.email}`
+        });
+
 
         res.status(201).json({
             success: true,

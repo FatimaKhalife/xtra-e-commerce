@@ -90,7 +90,8 @@ export const login = async (req, res) => {
     if (!match)
         return res.status(400).json({ success: false, message: "Incorrect password" });
 
-    const token = generateToken(user.id, remember);
+    // const token = generateToken(user.id, remember);
+    const token = generateToken(user, remember);
     sendAuthCookie(res, token, remember);
 
     res.json({ success: true, message: "Logged in" });
@@ -117,9 +118,12 @@ export const googleLogin = async (req, res) => {
     );
 
     let userId;
+    let user;
 
     if (existing.length) {
+
         userId = existing[0].id;
+        user = existing[0];
         if (!existing[0].google_id) {
             await dbPool.query(
                 "UPDATE users SET google_id=?, verified=TRUE WHERE id=?",
@@ -138,7 +142,8 @@ export const googleLogin = async (req, res) => {
         userId = result.insertId;
     }
 
-    const token = generateToken(userId, true);
+    // const token = generateToken(userId, true);
+    const token = generateToken(user, true);
     sendAuthCookie(res, token, true);
 
     res.json({ success: true, message: "Google login successful" });

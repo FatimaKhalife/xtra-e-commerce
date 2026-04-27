@@ -1,4 +1,4 @@
-import React from "react";
+
 import "./service1.css";
 
 const service = [

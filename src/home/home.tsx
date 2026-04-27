@@ -1,4 +1,4 @@
-import React from "react";
+
 import Nav from "../nav/nav";
 import "./home.css"; // for styling hero section
 

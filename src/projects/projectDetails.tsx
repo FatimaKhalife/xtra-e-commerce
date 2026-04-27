@@ -9,7 +9,7 @@ import { FaFolderOpen } from "react-icons/fa6";
 import { FaTags } from "react-icons/fa6";
 import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
-import { FaArrowRightLong, FaArrowLeftLong } from "react-icons/fa6";
+import { FaArrowRightLong } from "react-icons/fa6";
 import {
   suggestByTags,
   randomSuggestions,

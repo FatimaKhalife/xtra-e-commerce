@@ -1,5 +1,4 @@
-import { useState } from "react";
-import App from "./shop.tsx";
+
 import Nav from "./nav/nav.tsx";
 import Hero from "./hero1/hero.tsx";
 import Hero2 from "./hero2/hero2.tsx";
@@ -10,9 +9,7 @@ import Hero3 from "./hero3/hero3.tsx";
 import Partners from "./partners/partners.tsx";
 import Consult from "./sercive1/consult.tsx";
 import Footer from "./footer/footer.tsx";
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import { useEffect } from "react";
+
 
 function Home() {
  

@@ -1,11 +1,11 @@
-import Carttable from "./Carttable";
+
 import Nav from "../nav/nav.tsx";
 import Heroshop from "../hero4/hero4.tsx";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState, type FormEvent } from "react";
 import Footer from "../footer/footer.tsx";
 import { FaShippingFast } from "react-icons/fa";
-import { getNames } from "country-list";
+
 import axios from "axios";
 
 
@@ -21,22 +21,22 @@ type CartItem = {
     image: string;
     price: number;
 };
-type Product = {
-    id: number;
-    name: string;
-    price: number;
-    image: string;
-    images__json: string[];
-    category: string;
-    SKU: string;
-    Status: number;
-    Tags_json: string[];
-    Weight: number;
-    Dimensions: string;
-    Product_year: number;
-    Product_manual: string;
-    Refundable: string;
-};
+// type Product = {
+//     id: number;
+//     name: string;
+//     price: number;
+//     image: string;
+//     images__json: string[];
+//     category: string;
+//     SKU: string;
+//     Status: number;
+//     Tags_json: string[];
+//     Weight: number;
+//     Dimensions: string;
+//     Product_year: number;
+//     Product_manual: string;
+//     Refundable: string;
+// };
 const countrynames = [
     "Afghanistan",
     "Albania",
@@ -279,7 +279,7 @@ export default function Checkout() {
         setCart(data);
     };
 
-    const empty = cart.length === 0;
+    // const empty = cart.length === 0;
     const fetchcheckout = async (e: FormEvent) => {
         e.preventDefault();
 
