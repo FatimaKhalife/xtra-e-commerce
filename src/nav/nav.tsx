@@ -12,6 +12,7 @@ import { CgFileDocument } from "react-icons/cg";
 import { LiaReact } from "react-icons/lia";
 import { FaMapLocationDot } from "react-icons/fa6";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import "./nav.css"
 import react, { useState } from "react";
@@ -56,36 +57,35 @@ function Nav() {
 
           <nav>
             <ul>
-              <li><a href="../">Home</a></li>
-              <li><a href="../aboutus">About</a></li>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/aboutus">About</Link></li>
               {/* <li><a href="#">Services</a></li>
               <li><a href="#">FAQ's</a></li> */}
-       
+
 
               <li className="dropdown">
-                <a href="../projects">Projects <FaChevronDown className="icon3" /></a>
+                <li><Link to="/projects">Projects <FaChevronDown className="icon3" /></Link></li>
+            
                 <ul className="dropdown-menu">
-                  <li><a href="../projects">Projects</a></li>
+                  <Link to="/projects">Projects</Link>
                   <li><a href="/">Single</a></li>
                 </ul>
               </li>
 
               <li className="dropdown ">
-                <a href="../shop" >Shop <FaChevronDown className="icon3" /></a>
+                <li><Link to="/shop">Shop <FaChevronDown className="icon3" /></Link></li>
                 <ul className="dropdown-menu">
-                  <li><a href="../shop">All products</a></li>
+                  <li><Link to="/shop">Shop</Link></li>
                   <li><a href="/">My account</a></li>
-                  <li><a href="../Cart">Cart</a></li>
-                  <li><a href="../Checkout">Checkout</a></li>
+                  <li><Link to="/Cart">Cart</Link></li>
+                  <li><Link to="/Checkout">Checkout</Link></li>
                 </ul>
               </li>
 
-              <li><a href="#">Contact</a></li>
+               <li><Link to="/contact">Contact</Link></li>
               {logged ?
                 <li><a href="#" onClick={handleLogout}>Logout</a></li> :
-                <li>
-                  <a href="../login">
-                    Login</a></li>
+               <li><Link to="/login">Login</Link></li>
               }
               <li><a href="#" className="icon-link" onClick={() => setopen(true)}><GrSearch className="icon2" /></a></li>
               <li><a href="#" className="icon-link" onClick={() => setrightopen(true)}><IoMenu className="icon2" /></a></li>

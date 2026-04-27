@@ -48,7 +48,7 @@ nav a {
   color: rgb(254, 242, 242);
   position: relative;
   padding: 20px 14px;
-  font-size: larger;
+  font-size: 1rem;
   display: inline-flex;        
   align-items: center;          
   justify-content: center;      
