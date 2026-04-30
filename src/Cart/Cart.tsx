@@ -10,12 +10,10 @@ import { CiHeart } from "react-icons/ci";
 import { PiArrowBendDoubleUpRightBold } from "react-icons/pi";
 import { CgSearch } from "react-icons/cg";
 import { TbShoppingCartExclamation } from "react-icons/tb";
-
-
 import { RiShoppingCartLine } from "react-icons/ri";
-
-
 import "./Cart.css";
+import { API_URL } from "../config";
+
 type CartItem = {
     id: number;
     product_id: number;
@@ -52,7 +50,7 @@ export default function Cart() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch("http://localhost:5000/products/")
+        fetch(`${API_URL}/products/`)
             .then((res) => res.json())
             .then((data) => {
                 setProducts(data);
@@ -72,27 +70,21 @@ export default function Cart() {
             return bscore - ascore;
         }).slice(0, 2);
 
-
     const suggest2 = notIncart.sort(() => 0.5 - Math.random()).slice(0, 4);
 
-      
     const subtotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
     const shipping_threshold = 100;
     const shipping_fee = 50;
     const shipping = subtotal >= shipping_threshold ? 0 : shipping_fee;
-
     const total = subtotal + shipping;
     const freeship = shipping_threshold - subtotal;
-
-
 
     useEffect(() => {
         fetchCart();
     }, [])
 
-
     const fetchCart = async () => {
-        const res = await fetch("http://localhost:5000/cart", {
+        const res = await fetch(`${API_URL}/cart`, {
             credentials: "include",
         });
         const data = await res.json();
@@ -103,47 +95,41 @@ export default function Cart() {
 
     const handleIncrease = async (id: number) => {
         try {
-
-            await fetch("http://localhost:5000/cart/increase", {
+            await fetch(`${API_URL}/cart/increase`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 credentials: "include",
                 body: JSON.stringify({ productId: id }),
             })
-
             fetchCart();
         } catch (err) {
             console.error("Error updating cart:", err);
         }
-
     }
+
     const handleDecrease = async (id: number) => {
         try {
-            await fetch("http://localhost:5000/cart/decrease", {
+            await fetch(`${API_URL}/cart/decrease`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 credentials: "include",
                 body: JSON.stringify({ productId: id }),
-
             })
             fetchCart();
         } catch (err) {
             console.error("Error updating cart:", err);
         }
-
     }
+
     const handleRemove = async (id: number) => {
         try {
-            await fetch("http://localhost:5000/cart/delete", {
+            await fetch(`${API_URL}/cart/delete`, {
                 method: "DELETE",
                 headers: { "Content-Type": "application/json" },
                 credentials: "include",
                 body: JSON.stringify({ productId: id }),
             });
-
-
             fetchCart();
-            console.log("yessssssssss")
         } catch (err) {
             console.error("Error updating cart:", err);
         }
@@ -153,7 +139,6 @@ export default function Cart() {
         <div>
             <Nav />
             <Heroshop title="Cart" subtitle="CART" />
-
             <div className="cart">
                 {!empty ?
                     <div>
@@ -161,75 +146,41 @@ export default function Cart() {
                             onIncrease={handleIncrease}
                             onDecrease={handleDecrease}
                             onRemove={handleRemove} />
-                        <div >
-                            <button className="details-addtocart" onClick={()=>navigate("/shop")}>Continue shopping</button>
+                        <div>
+                            <button className="details-addtocart" onClick={() => navigate("/shop")}>Continue shopping</button>
                         </div>
                         <div className="cart-extra">
                             <div className="total-price">
                                 <div className="cart-totals">YOU MAY BE INTERESTED IN ...</div>
                                 <div className="shop-grid">
-
                                     {suggest.map((product, index) => (
                                         <div key={index}>
-                                            <Link to={`/product/${product.id}`} >
+                                            <Link to={`/product/${product.id}`}>
                                                 <div className="shop-content">
                                                     <div className="shop-img">
                                                         <img src={product.image} />
-
                                                         <div className="shop-left">
                                                             <div className="shop-h1">
-                                                                <div
-                                                                    className="shop-add"
-                                                                    style={{
-                                                                        opacity: hovered1 ? 1 : 0,
-                                                                        transform: hovered1 ? "scale(1)" : "scale(0)",
-                                                                    }}
-                                                                >
+                                                                <div className="shop-add" style={{ opacity: hovered1 ? 1 : 0, transform: hovered1 ? "scale(1)" : "scale(0)" }}>
                                                                     <a href="">Add to wishlist</a>
                                                                 </div>
-                                                                <div
-                                                                    className="shop-heart"
-                                                                    onMouseEnter={() => sethovered1(true)}
-                                                                    onMouseLeave={() => sethovered1(false)}
-                                                                >
+                                                                <div className="shop-heart" onMouseEnter={() => sethovered1(true)} onMouseLeave={() => sethovered1(false)}>
                                                                     <CiHeart />
                                                                 </div>
                                                             </div>
-
                                                             <div className="shop-h2">
-                                                                <div
-                                                                    className="shop-add"
-                                                                    style={{
-                                                                        opacity: hovered2 ? 1 : 0,
-                                                                        transform: hovered2 ? "scale(1)" : "scale(0)",
-                                                                    }}
-                                                                >
+                                                                <div className="shop-add" style={{ opacity: hovered2 ? 1 : 0, transform: hovered2 ? "scale(1)" : "scale(0)" }}>
                                                                     <a href="">Add to compare</a>
                                                                 </div>
-                                                                <div
-                                                                    className="shop-compare"
-                                                                    onMouseEnter={() => sethovered2(true)}
-                                                                    onMouseLeave={() => sethovered2(false)}
-                                                                >
+                                                                <div className="shop-compare" onMouseEnter={() => sethovered2(true)} onMouseLeave={() => sethovered2(false)}>
                                                                     <PiArrowBendDoubleUpRightBold />
                                                                 </div>
                                                             </div>
-
                                                             <div className="shop-h3">
-                                                                <div
-                                                                    className="shop-add"
-                                                                    style={{
-                                                                        opacity: hovered3 ? 1 : 0,
-                                                                        transform: hovered3 ? "scale(1)" : "scale(0)",
-                                                                    }}
-                                                                >
+                                                                <div className="shop-add" style={{ opacity: hovered3 ? 1 : 0, transform: hovered3 ? "scale(1)" : "scale(0)" }}>
                                                                     <a href="">Quick view</a>
                                                                 </div>
-                                                                <div
-                                                                    className="shop-search"
-                                                                    onMouseEnter={() => sethovered3(true)}
-                                                                    onMouseLeave={() => sethovered3(false)}
-                                                                >
+                                                                <div className="shop-search" onMouseEnter={() => sethovered3(true)} onMouseLeave={() => sethovered3(false)}>
                                                                     <CgSearch />
                                                                 </div>
                                                             </div>
@@ -238,7 +189,6 @@ export default function Cart() {
                                                             <RiShoppingCartLine />
                                                             <a href="">Add to cart</a>
                                                         </div>
-
                                                         <div className="shop-price">
                                                             <p>{product.price}</p>
                                                         </div>
@@ -252,147 +202,90 @@ export default function Cart() {
                                                 </div>
                                             </Link>
                                         </div>
-
                                     ))}
-                                    <div>
-                                    </div>
-
                                 </div>
                             </div>
-
-
-                           <div className="total-price">
-                        <div className="cart-totals">CART TOTALS</div>
-                        <div>
-                            <table className="summary-table">
-                                <tr>
-                                    <th>Product</th>
-                                    <th>Subtotal</th>
-                                </tr>
-                                {cart.map((prod, i) => (
-                                    <tr key={i}>
-                                        <td>{prod.name} <b>x {prod.qty}</b></td>
-                                        <td>{prod.price}</td>
-                                    </tr>
-                                ))}
-                                <tr>
-                                    <th>Shipping</th>
-                                    <th>${shipping}</th>
-                                </tr>
-                                <tr>
-                                    <th>Subtotal</th>
-                                    <td>${subtotal}</td>
-                                </tr>
-                                <tr>
-                                    <th>Total</th>
-                                    <th>${total}</th>
-                                </tr>
-                            </table>
-                            {freeship > 0 ?
-                                <div style={{margin:" 30px 0"}}>
-                                    <p
-                                        style={{
-                                            color: "#676767",
-                                            padding: "10px",
-                                            display: "flex",
-                                            gap: "5px",
-                                        }}
-                                    >
-                                        <i>
-                                            <FaShippingFast />
-                                        </i>
-                                        Add <b>${freeship} </b>  more to get free shipping!
-
-                                    </p>
-                                    <div className="progress-slider">
-                                        <div className="filled" style={{ width: `${100 - freeship}%` }}></div>
-                                    </div>
-
+                            <div className="total-price">
+                                <div className="cart-totals">CART TOTALS</div>
+                                <div>
+                                    <table className="summary-table">
+                                        <tr>
+                                            <th>Product</th>
+                                            <th>Subtotal</th>
+                                        </tr>
+                                        {cart.map((prod, i) => (
+                                            <tr key={i}>
+                                                <td>{prod.name} <b>x {prod.qty}</b></td>
+                                                <td>{prod.price}</td>
+                                            </tr>
+                                        ))}
+                                        <tr>
+                                            <th>Shipping</th>
+                                            <th>${shipping}</th>
+                                        </tr>
+                                        <tr>
+                                            <th>Subtotal</th>
+                                            <td>${subtotal}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Total</th>
+                                            <th>${total}</th>
+                                        </tr>
+                                    </table>
+                                    {freeship > 0 ?
+                                        <div style={{ margin: "30px 0" }}>
+                                            <p style={{ color: "#676767", padding: "10px", display: "flex", gap: "5px" }}>
+                                                <i><FaShippingFast /></i>
+                                                Add <b>${freeship}</b> more to get free shipping!
+                                            </p>
+                                            <div className="progress-slider">
+                                                <div className="filled" style={{ width: `${100 - freeship}%` }}></div>
+                                            </div>
+                                        </div>
+                                        : ""}
+                                    <button className="details-addtocart" form="checkout-form" type="submit" onClick={() => navigate("/checkout")}>Place order</button>
                                 </div>
-                                : ""}
-                            <button className="details-addtocart" form="checkout-form" type="submit" onClick={()=>navigate("/checkout")}>Place order</button>
-
-
-
-                        </div>
-                    </div>
-
+                            </div>
                         </div>
                     </div>
                     :
                     <div className="cart-extra two">
-
                         <div className="empty-cart">
-                            <TbShoppingCartExclamation  style={{fontSize:"15rem" ,color:"rgba(128, 128, 128, 0.29)"}}/>
+                            <TbShoppingCartExclamation style={{ fontSize: "15rem", color: "rgba(128, 128, 128, 0.29)" }} />
                             <h4>Looks like your cart is empty!</h4>
                             <p>Time to start your shopping</p>
                         </div>
-
                         <div className="total-price">
                             <div className="cart-totals">YOU MAY BE INTERESTED IN ...</div>
                             <div className="shop-grid">
-
                                 {suggest2.map((product, index) => (
                                     <div key={index}>
-                                        <Link to={`/product/${product.id}`} >
+                                        <Link to={`/product/${product.id}`}>
                                             <div className="shop-content">
                                                 <div className="shop-img">
                                                     <img src={product.image} />
-
                                                     <div className="shop-left">
                                                         <div className="shop-h1">
-                                                            <div
-                                                                className="shop-add"
-                                                                style={{
-                                                                    opacity: hovered1 ? 1 : 0,
-                                                                    transform: hovered1 ? "scale(1)" : "scale(0)",
-                                                                }}
-                                                            >
+                                                            <div className="shop-add" style={{ opacity: hovered1 ? 1 : 0, transform: hovered1 ? "scale(1)" : "scale(0)" }}>
                                                                 <a href="">Add to wishlist</a>
                                                             </div>
-                                                            <div
-                                                                className="shop-heart"
-                                                                onMouseEnter={() => sethovered1(true)}
-                                                                onMouseLeave={() => sethovered1(false)}
-                                                            >
+                                                            <div className="shop-heart" onMouseEnter={() => sethovered1(true)} onMouseLeave={() => sethovered1(false)}>
                                                                 <CiHeart />
                                                             </div>
                                                         </div>
-
                                                         <div className="shop-h2">
-                                                            <div
-                                                                className="shop-add"
-                                                                style={{
-                                                                    opacity: hovered2 ? 1 : 0,
-                                                                    transform: hovered2 ? "scale(1)" : "scale(0)",
-                                                                }}
-                                                            >
+                                                            <div className="shop-add" style={{ opacity: hovered2 ? 1 : 0, transform: hovered2 ? "scale(1)" : "scale(0)" }}>
                                                                 <a href="">Add to compare</a>
                                                             </div>
-                                                            <div
-                                                                className="shop-compare"
-                                                                onMouseEnter={() => sethovered2(true)}
-                                                                onMouseLeave={() => sethovered2(false)}
-                                                            >
+                                                            <div className="shop-compare" onMouseEnter={() => sethovered2(true)} onMouseLeave={() => sethovered2(false)}>
                                                                 <PiArrowBendDoubleUpRightBold />
                                                             </div>
                                                         </div>
-
                                                         <div className="shop-h3">
-                                                            <div
-                                                                className="shop-add"
-                                                                style={{
-                                                                    opacity: hovered3 ? 1 : 0,
-                                                                    transform: hovered3 ? "scale(1)" : "scale(0)",
-                                                                }}
-                                                            >
+                                                            <div className="shop-add" style={{ opacity: hovered3 ? 1 : 0, transform: hovered3 ? "scale(1)" : "scale(0)" }}>
                                                                 <a href="">Quick view</a>
                                                             </div>
-                                                            <div
-                                                                className="shop-search"
-                                                                onMouseEnter={() => sethovered3(true)}
-                                                                onMouseLeave={() => sethovered3(false)}
-                                                            >
+                                                            <div className="shop-search" onMouseEnter={() => sethovered3(true)} onMouseLeave={() => sethovered3(false)}>
                                                                 <CgSearch />
                                                             </div>
                                                         </div>
@@ -401,7 +294,6 @@ export default function Cart() {
                                                         <RiShoppingCartLine />
                                                         <a href="">Add to cart</a>
                                                     </div>
-
                                                     <div className="shop-price">
                                                         <p>{product.price}</p>
                                                     </div>
@@ -415,29 +307,14 @@ export default function Cart() {
                                             </div>
                                         </Link>
                                     </div>
-
                                 ))}
-                                <div>
-                                </div>
-
                             </div>
                         </div>
-                          <button className="details-addtocart" onClick={()=>navigate("/shop")}>Return to shop</button>
-
+                        <button className="details-addtocart" onClick={() => navigate("/shop")}>Return to shop</button>
                     </div>
                 }
-
                 <Footer />
-
-
             </div>
-
-
-
-
-
         </div>
-
     )
-
 }

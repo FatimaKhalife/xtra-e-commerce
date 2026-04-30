@@ -1,7 +1,7 @@
 import "./detail.css";
 import { useEffect, useState, type FormEvent } from "react";
 import axios from "axios";
-
+import { API_URL } from "../config";
 import { FaRegStar, FaStar } from "react-icons/fa";
 
 interface Review {
@@ -28,7 +28,7 @@ const Review: React.FC<{ productId: number }> = ({ productId }) => {
   const [math, setmath] = useState("");
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/review/${productId}`).then((res) => {
+    axios.get(`${API_URL}/review/${productId}`).then((res) => {
       setReviews(res.data.reviews || res.data.data || res.data);
     });
   }, [productId]);
@@ -41,7 +41,7 @@ const Review: React.FC<{ productId: number }> = ({ productId }) => {
       return alert("Math answer is incorrect.");
     }
 
-    await axios.post("http://localhost:5000/review/", {
+    await axios.post(`${API_URL}/review/`, {
       productId,
       name,
       image,
@@ -59,7 +59,7 @@ const Review: React.FC<{ productId: number }> = ({ productId }) => {
     setReview("");
 
 
-    const res = await axios.get(`http://localhost:5000/review/${productId}`);
+    const res = await axios.get(`${API_URL}/review/${productId}`);
     setReviews(res.data);
   };
 

@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { CiHeart } from "react-icons/ci";
 import { PiArrowBendDoubleUpRightBold } from "react-icons/pi";
 import { CgSearch } from "react-icons/cg";
-
+import { API_URL } from "../config";
 import { RiShoppingCartLine } from "react-icons/ri";
 import { MdArrowDropDown } from "react-icons/md";
 import { Link } from "react-router-dom";
@@ -57,7 +57,7 @@ function Shop1() {
     setIsOpen(false);
   };
   useEffect(() => {
-  fetch("http://localhost:5000/products/")
+  fetch(`${API_URL}/products`)
     .then((res) => res.json())
     .then((data) => {
       setProducts(data);

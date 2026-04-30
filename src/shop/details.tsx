@@ -13,6 +13,7 @@ import { useEffect } from "react";
 import { PiArrowBendDoubleUpRightBold } from "react-icons/pi";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
+import { API_URL } from "../config";
 
 import Review from "./review";
 
@@ -45,7 +46,7 @@ export default function Details() {
   const imglen = Number(product?.images_json?.length);
   const [desc, setdesc] = useState("description");
   useEffect(() => {
-    fetch(`http://localhost:5000/products/${id}`)
+    fetch(`${API_URL}/products/${id}`)
       .then((res) => res.json())
       .then((data) => setProduct(data.data || data.product || data))
       .catch((err) => console.error(err));
@@ -63,7 +64,7 @@ export default function Details() {
     try {
 
 
-      fetch("http://localhost:5000/cart/add", {
+      fetch(`${API_URL}/cart/add`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
