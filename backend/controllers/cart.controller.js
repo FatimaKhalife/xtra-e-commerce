@@ -1,5 +1,31 @@
 import { dbPool } from "../config/db.js";
 
+// export const GetCartItems = async (req, res) => {
+//     console.log("USER ID FROM TOKEN:", req.userId);
+
+//     const userId = req.userId;
+//     console.log("USER ID FROM TOKEN:", userId);
+//     const [rows] = await dbPool.query(`
+//     SELECT 
+//       cart_items.id,
+//       cart_items.product_id,
+//       cart_items.qty,
+//       products.name,
+//       Tags_json,
+//       products.sku,
+//       products.image,
+//       products.price
+//     FROM cart_items
+//     JOIN carts ON cart_items.cart_id = carts.id
+//     JOIN products ON cart_items.product_id = products.id
+//     WHERE carts.user_id = ?
+//   `, [userId]);
+
+//     res.json(rows);
+//     console.log("Fetched cart items:", rows);
+
+// }
+
 export const GetCartItems = async (req, res) => {
     console.log("USER ID FROM TOKEN:", req.userId);
 
@@ -21,9 +47,13 @@ export const GetCartItems = async (req, res) => {
     WHERE carts.user_id = ?
   `, [userId]);
 
-    res.json(rows);
-    console.log("Fetched cart items:", rows);
+    const items = rows.map(item => ({
+        ...item,
+        Tags_json: JSON.parse(item.Tags_json || '[]')
+    }));
 
+    res.json(items);
+    console.log("Fetched cart items:", rows);
 }
 
 export const AddToCart = async (req, res) => {

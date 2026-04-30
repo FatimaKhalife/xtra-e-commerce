@@ -35,7 +35,8 @@ export const signup = async (req, res) => {
         );
     }
 
-    const link = `http://localhost:5000/auth/verify?token=${token}`;
+    // const link = `http://localhost:5000/auth/verify?token=${token}`;
+    const link = `${process.env.BACKEND_URL}/auth/verify?token=${token}`;
 
     await transporter.sendMail({
         from: process.env.EMAIL_USER,
@@ -64,7 +65,8 @@ export const verifyEmail = async (req, res) => {
         [user[0].id]
     );
 
-    res.redirect("http://localhost:5173/login");
+    // res.redirect("http://localhost:5173/login");
+    res.redirect(`${process.env.CLIENT_URL}/login`);
 }
 
 
@@ -140,6 +142,7 @@ export const googleLogin = async (req, res) => {
             [name, email, googleId, avatar]
         );
         userId = result.insertId;
+        user = { id: userId, name, email };
     }
 
     // const token = generateToken(userId, true);
