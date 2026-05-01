@@ -13,7 +13,7 @@ import { LiaReact } from "react-icons/lia";
 import { FaMapLocationDot } from "react-icons/fa6";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import { API_URL } from "../config";
 import "./nav.css"
 import react, { useState } from "react";
 
@@ -24,13 +24,13 @@ function Nav() {
   const [rightopen, setrightopen] = useState(false);
   const [logged, setlogged] = useState(false);
   useEffect(() => {
-    fetch("http://localhost:5000/auth/me", { credentials: "include" })
+    fetch(`${API_URL}/auth/me`, { credentials: "include" })
       .then(res => (res.json()))
       .then(data => setlogged(data.success))
   }, []);
 
   const handleLogout = () => {
-    fetch("http://localhost:5000/auth/logout", { method: "POST", credentials: "include" })
+    fetch(`${API_URL}/auth/logout`, { method: "POST", credentials: "include" })
       .then(res => (res.json()))
       .then(() => {
         setlogged(false);

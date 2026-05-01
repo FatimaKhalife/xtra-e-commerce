@@ -4,7 +4,7 @@ import Footer from "../footer/footer.tsx";
 import { PiParallelogramFill } from "react-icons/pi";
 
 import { useState, type FormEvent } from "react";
-
+import { API_URL } from "../config";
 import "./contact.css";
 import { FiPhoneCall } from "react-icons/fi";
 import { TfiEmail } from "react-icons/tfi";
@@ -45,7 +45,7 @@ export default function Conatct() {
         }
 
         try {
-            await axios.post("http://localhost:5000/contactus",
+            await axios.post(`${API_URL}/contactus`,
                 { formData }, { withCredentials: true });
             alert("sent successfully");
 

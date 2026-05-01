@@ -6,7 +6,7 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 import { HiSlash } from "react-icons/hi2";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import { API_URL } from "../config";
 
 
 
@@ -14,13 +14,13 @@ export default function Footer() {
 
   const [logged, setlogged] = useState(false);
   useEffect(() => {
-    fetch("http://localhost:5000/me", { credentials: "include" })
+    fetch(`${API_URL}/me`, { credentials: "include" })
       .then(res => (res.json()))
       .then(data => setlogged(data.success))
   }, []);
 
   const HandleLogout = () => {
-    fetch("http://localhost:5000/logout", { method: "POST", credentials: "include" })
+    fetch(`${API_URL}/logout`, { method: "POST", credentials: "include" })
       .then(res => (res.json()))
       .then(() => {
         setlogged(false);

@@ -1,12 +1,13 @@
 // GoogleLoginButton.tsx
 import { GoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
+import { API_URL } from "../config";
 
 const GoogleLoginButton = () => {
   const handleSuccess = async (credentialResponse: any) => {
     try {
       const response = await axios.post(
-        'http://localhost:5000/auth/google',
+        `${API_URL}/auth/google`,
         { credential: credentialResponse.credential },
         { withCredentials: true }
       );

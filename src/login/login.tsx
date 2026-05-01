@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import GoogleLoginButton from "./googlebuttun";
 import "./signup.css";
 import "../hero2/hero2.css";
-
+import { API_URL } from "../config";
 
 
 export default function Login() {
@@ -19,7 +19,7 @@ export default function Login() {
     const [logged, setUserLoggedIn] = useState(false);
 
     useEffect(() => {
-        fetch("http://localhost:5000/auth/me", { credentials: "include" })
+        fetch(`${API_URL}/auth/me`, { credentials: "include" })
             .then(res => res.json())
             .then(data => setUserLoggedIn(data.success));
     }, []);

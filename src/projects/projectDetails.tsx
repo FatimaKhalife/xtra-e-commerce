@@ -14,7 +14,7 @@ import {
   suggestByTags,
   randomSuggestions,
 } from "../utils/suggestByTags";
-
+import { API_URL } from "../config";
 
 
 type ProjectRow = {
@@ -100,7 +100,7 @@ export default function ProjectDetails() {
 
 
   useEffect(() => {
-    fetch(`http://localhost:5000/projects/${id}`, { credentials: "include" })
+    fetch(`${API_URL}/projects/${id}`, { credentials: "include" })
       .then((res) => res.json())
       .then(data => setp(data))
       .catch((err) => console.error(err));
@@ -108,13 +108,13 @@ export default function ProjectDetails() {
 
 
   useEffect(() => {
-    fetch(`http://localhost:5000/projects/${id}/nav`)
+    fetch(`${API_URL}/projects/${id}/nav`)
       .then(res => res.json())
       .then(data => setNav(data));
   }, [id]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/projects")
+    fetch(`${API_URL}/projects`)
       .then(res => res.json())
       .then(data => setProjects(data));
   }, []);

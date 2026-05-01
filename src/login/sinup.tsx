@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./signup.css";
 import "../hero2/hero2.css";
 import GoogleLoginButtun from "./googlebuttun";
-
+import { API_URL } from "../config";
 
 export default function Signup() {
   const [name, setName] = useState("");
@@ -32,7 +32,7 @@ export default function Signup() {
 
 
     try {
-      const res = await fetch("http://localhost:5000/auth/signup", {
+      const res = await fetch(`${API_URL}/auth/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, password }),

@@ -5,7 +5,7 @@ import Pagination from "../Pagination.tsx";
 import "./projects.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
+import { API_URL } from "../config";
 import { useEffect } from "react";
 
 import { FaArrowRightLong} from "react-icons/fa6";
@@ -76,7 +76,7 @@ export default function Projects() {
   const currentProd = project.slice(startIndex, startIndex + productsPerPage);
 
     useEffect(() => {
-    fetch("http://localhost:5000/projects/")
+    fetch(`${API_URL}/projects/`)
       .then((res) => res.json())
       .then((data) => {
         setp(data);

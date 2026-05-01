@@ -7,7 +7,7 @@ import Footer from "../footer/footer.tsx";
 import { FaShippingFast } from "react-icons/fa";
 
 import axios from "axios";
-
+import { API_URL } from "../config";
 
 
 import "./Cart.css";
@@ -272,7 +272,7 @@ export default function Checkout() {
 
 
     const fetchCart = async () => {
-        const res = await fetch("http://localhost:5000/cart", {
+        const res = await fetch(`${API_URL}/cart`, {
             credentials: "include",
         });
         const data = await res.json();
@@ -298,7 +298,7 @@ export default function Checkout() {
         }
 
         try {
-            await axios.post("http://localhost:5000/checkout",
+            await axios.post(`${API_URL}/checkout`,
                 { billing }, { withCredentials: true });
 
             alert("Order placed successfully");
