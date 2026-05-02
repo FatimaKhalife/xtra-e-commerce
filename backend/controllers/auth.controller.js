@@ -1,7 +1,7 @@
 import { dbPool } from "../config/db.js";
 import bcrypt from "bcryptjs";
 import crypto from "crypto";
-import { transporter } from "../config/email.js";
+import { resend } from "../config/email.js";
 import { generateToken } from "../utils/generateToken.js";
 import { sendAuthCookie } from "../utils/sendCookie.js";
 import { OAuth2Client } from "google-auth-library";
@@ -38,13 +38,12 @@ export const signup = async (req, res) => {
     // const link = `http://localhost:5000/auth/verify?token=${token}`;
     const link = `${process.env.BACKEND_URL}/auth/verify?token=${token}`;
 
-    await transporter.sendMail({
-        from: process.env.EMAIL_USER,
+        await resend.emails.send({
+        from: 'onboarding@resend.dev',
         to: email,
         subject: "Verify your email",
-        html: `<p>Hello ${name}, please verify:</p>
-           <a href="${link}">Verify Email</a>`,
-    })
+        html: `<p>Hello ${name}, please verify:</p><a href="${link}">Verify Email</a>`
+    });
 
     res.json({ success: true, message: "Check your email to verify." });
 
