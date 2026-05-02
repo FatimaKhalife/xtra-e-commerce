@@ -5,8 +5,8 @@ export const sendAuthCookie = (res, token, remember = false) => {
 
   res.cookie("token", token, {
     httpOnly: true,      
-    secure: false,      
-    sameSite: "lax",    
+    secure: true,      
+    sameSite: "none",    
     maxAge,
   });
 };
