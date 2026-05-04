@@ -23,22 +23,20 @@ function Nav() {
   const [open, setopen] = useState(false);
   const [rightopen, setrightopen] = useState(false);
   const [logged, setlogged] = useState(false);
-  
-  useEffect(() => {
-    const localLogged = localStorage.getItem("logged");
-    if (localLogged) {
-      setlogged(true);
-      return;
-    }
+
+useEffect(() => {
     fetch(`${API_URL}/auth/me`, { credentials: "include" })
-      .then(res => res.json())
-      .then(data => {
-        setlogged(data.success);
-        if (data.success) localStorage.setItem("logged", "true");
-        else localStorage.removeItem("logged");
-      })
-      .catch(() => setlogged(false));
-  }, []);
+        .then(res => res.json())
+        .then(data => {
+            setlogged(data.success);
+            if (data.success) localStorage.setItem("logged", "true");
+            else localStorage.removeItem("logged");
+        })
+        .catch(() => {
+            setlogged(false);
+            localStorage.removeItem("logged");
+        });
+}, []);
   const handleLogout = () => {
     fetch(`${API_URL}/auth/logout`, { method: "POST", credentials: "include" })
       .then(res => res.json())
