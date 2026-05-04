@@ -23,6 +23,7 @@ function Nav() {
   const [open, setopen] = useState(false);
   const [rightopen, setrightopen] = useState(false);
   const [logged, setlogged] = useState(false);
+  
   useEffect(() => {
     const localLogged = localStorage.getItem("logged");
     if (localLogged) {
@@ -38,7 +39,6 @@ function Nav() {
       })
       .catch(() => setlogged(false));
   }, []);
-
   const handleLogout = () => {
     fetch(`${API_URL}/auth/logout`, { method: "POST", credentials: "include" })
       .then(res => res.json())
