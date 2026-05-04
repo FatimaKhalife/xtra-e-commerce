@@ -62,7 +62,8 @@ export const AddToCart = async (req, res) => {
 
     const [cartRows]= await dbPool.query("Select * from carts where user_id=?",[userId]);
     if(cartRows.length===0){
-        return res.status(400).json({message:"no cart found"});
+        await dbPool.query("INSERT INTO carts (user_id) VALUES (?)", [userId]);
+        [cartRows] = await dbPool.query("SELECT * FROM carts WHERE user_id=?", [userId]); 
     }
 
     const cartId=cartRows[0].id;
