@@ -99,7 +99,7 @@ function Nav() {
               <li><Link to="/contact">Contact</Link></li>
 
               {logged ?
-                <li><button onClick={handleLogout} className="logout-btn">Logout</button></li> :
+                <li onClick={handleLogout} >Logout</li> :
                 <li><Link to="/login">Login</Link></li>
               }
               <li><a href="#" className="icon-link" onClick={() => setopen(true)}><GrSearch className="icon2" /></a></li>
