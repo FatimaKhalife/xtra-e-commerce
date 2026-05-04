@@ -1,73 +1,110 @@
-# React + TypeScript + Vite
+# Xtra Factory – E-Commerce Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack e-commerce web application inspired by the [Xtra Factory WordPress theme](https://xtratheme.com/elementor/factory/), built from scratch using React, TypeScript, and Node.js.
 
-Currently, two official plugins are available:
+- Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[https://xtra-e-commerce.vercel.app](https://xtra-e-commerce.vercel.app)
 
-## React Compiler
+- Preview
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Tech Stack
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Frontend:
+- React
+- TypeScript
+- React Router DOM
+- Vite
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Backend:
+- Node.js / Express
+- MySQL
+- JWT Authentication
+- Google OAuth
+- Resend (email verification)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Deployment:
+- Frontend → Vercel
+- Backend → Render
+- Database → FreeSQLDatabase
+
+---
+Features
+
+- Product listing with grid view options and pagination
+- Product detail page with image gallery and reviews
+- User authentication (email/password + Google OAuth)
+- Email verification on signup
+- Shopping cart with quantity management
+- Checkout with billing details form
+- Projects portfolio page
+- Contact form
+
+
+---
+
+- Getting Started
+
+Prerequisites
+
+- Node.js (v16 or higher)
+- MySQL
+- npm
+
+Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/FatimaKhalife/xtra-e-commerce.git
+cd xtra-e-commerce
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+#### Frontend
+```bash
+npm install
+npm run dev
 ```
+
+#### Backend
+```bash
+cd backend
+npm install
+node server.js
+```
+
+Environment Variables
+
+Frontend (`.env`):
+```
+VITE_API_URL=http://localhost:5000
+```
+
+Backend (`backend/.env`):
+```
+PORT=5000
+DB_HOST=your_db_host
+DB_USER=your_db_user
+DB_PASSWORD=your_db_password
+DB_DATABASE=your_db_name
+DB_PORT=3306
+JWT_SECRET=your_jwt_secret
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+RESEND_API_KEY=your_resend_api_key
+CLIENT_URL=http://localhost:5173
+BACKEND_URL=http://localhost:5000
+```
+---
+
+- Purpose
+
+This project was built to practice full-stack development using React, TypeScript, Node.js, and MySQL — covering authentication, database design, REST APIs, and deployment.
+
+---
+
+- License
+
+This project is for educational purposes only. Design credit goes to [Xtra Theme](https://xtratheme.com/).
