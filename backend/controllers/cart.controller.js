@@ -60,7 +60,8 @@ export const AddToCart = async (req, res) => {
     const userId=req.userId;
     const {productId, qty } = req.body;
 
-    const [cartRows]= await dbPool.query("Select * from carts where user_id=?",[userId]);
+    let [cartRows]= await dbPool.query("Select * from carts where user_id=?",[userId]);
+    
     if(cartRows.length===0){
         await dbPool.query("INSERT INTO carts (user_id) VALUES (?)", [userId]);
         [cartRows] = await dbPool.query("SELECT * FROM carts WHERE user_id=?", [userId]); 
