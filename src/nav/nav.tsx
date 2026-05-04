@@ -24,18 +24,25 @@ function Nav() {
   const [rightopen, setrightopen] = useState(false);
   const [logged, setlogged] = useState(false);
   useEffect(() => {
-    fetch(`${API_URL}/auth/me`, { credentials: "include" })
+    fetch(`${API_URL}/auth/me`, { method: "POST", credentials: "include" })
       .then(res => (res.json()))
       .then(data => setlogged(data.success))
   }, []);
 
   const handleLogout = () => {
-    fetch(`${API_URL}/auth/logout`, { method: "POST", credentials: "include" })
-      .then(res => (res.json()))
+    fetch(`${API_URL}/auth/logout`, {
+      method: "POST",
+      credentials: "include"
+    })
+      .then(res => res.json())
       .then(() => {
         setlogged(false);
-        window.location.reload();
+        window.location.href = "/";
       })
+      .catch(() => {
+        setlogged(false);
+        window.location.href = "/";
+      });
   }
 
 
@@ -65,7 +72,7 @@ function Nav() {
 
               <li className="dropdown">
                 <li><Link to="/projects">Projects <FaChevronDown className="icon3" /></Link></li>
-            
+
                 <ul className="dropdown-menu">
                   <Link to="/projects">Projects</Link>
                   <li><a href="/">Single</a></li>
@@ -82,10 +89,11 @@ function Nav() {
                 </ul>
               </li>
 
-               <li><Link to="/contact">Contact</Link></li>
+              <li><Link to="/contact">Contact</Link></li>
+
               {logged ?
-                <li><a href="#" onClick={handleLogout}>Logout</a></li> :
-               <li><Link to="/login">Login</Link></li>
+                <li><button onClick={handleLogout} className="logout-btn">Logout</button></li> :
+                <li><Link to="/login">Login</Link></li>
               }
               <li><a href="#" className="icon-link" onClick={() => setopen(true)}><GrSearch className="icon2" /></a></li>
               <li><a href="#" className="icon-link" onClick={() => setrightopen(true)}><IoMenu className="icon2" /></a></li>
