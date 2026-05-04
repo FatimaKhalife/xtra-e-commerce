@@ -29,21 +29,15 @@ function Nav() {
       .then(data => setlogged(data.success))
   }, []);
 
-  const handleLogout = () => {
-    fetch(`${API_URL}/auth/logout`, {
-      method: "POST",
-      credentials: "include"
-    })
-      .then(res => res.json())
-      .then(() => {
-        setlogged(false);
-        window.location.href = "/";
-      })
-      .catch(() => {
-        setlogged(false);
-        window.location.href = "/";
-      });
-  }
+ const handleLogout = () => {
+    fetch(`${API_URL}/auth/logout`, { method: "POST", credentials: "include" })
+        .then(res => res.json())
+        .then(() => {
+            localStorage.removeItem("logged");
+            setlogged(false);
+            window.location.href = "/";
+        });
+}
 
 
   return (

@@ -13,7 +13,8 @@ const GoogleLoginButton = () => {
       );
       
       if (response.data.success) {
-        window.location.href = '/'; // Redirect after successful login
+        localStorage.setItem("logged", "true");
+        window.location.href = '/';
       }
     } catch (error) {
       console.error('Login failed:', error);
