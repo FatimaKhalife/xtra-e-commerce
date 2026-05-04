@@ -24,27 +24,32 @@ function Nav() {
   const [rightopen, setrightopen] = useState(false);
   const [logged, setlogged] = useState(false);
 
-useEffect(() => {
+  useEffect(() => {
     fetch(`${API_URL}/auth/me`, { credentials: "include" })
-        .then(res => res.json())
-        .then(data => {
-            setlogged(data.success);
-            if (data.success) localStorage.setItem("logged", "true");
-            else localStorage.removeItem("logged");
-        })
-        .catch(() => {
-            setlogged(false);
-            localStorage.removeItem("logged");
-        });
-}, []);
-  const handleLogout = () => {
-    fetch(`${API_URL}/auth/logout`, { method: "POST", credentials: "include" })
-      .then(res => res.json())
-      .then(() => {
-        localStorage.removeItem("logged");
+      .then(res => {
+        if (!res.ok) {
+          localStorage.removeItem("logged");
+          setlogged(false);
+          return;
+        }
+        return res.json();
+      })
+      .then(data => {
+        if (data) {
+          setlogged(data.success);
+          if (!data.success) localStorage.removeItem("logged");
+        }
+      })
+      .catch(() => {
         setlogged(false);
-        window.location.href = "/";
+        localStorage.removeItem("logged");
       });
+  }, []);
+  const handleLogout = async () => {
+    await fetch(`${API_URL}/auth/logout`, { method: "POST", credentials: "include" });
+    localStorage.removeItem("logged");
+    setlogged(false);
+
   }
 
 
