@@ -38,7 +38,7 @@ export const signup = async (req, res) => {
     // const link = `http://localhost:5000/auth/verify?token=${token}`;
     const link = `${process.env.BACKEND_URL}/auth/verify?token=${token}`;
 
-        await resend.emails.send({
+    await resend.emails.send({
         from: 'onboarding@resend.dev',
         to: email,
         subject: "Verify your email",
@@ -159,7 +159,8 @@ export const logout = (req, res) => {
     res.cookie("token", "", {
         httpOnly: true,
         expires: new Date(0),
+        sameSite: "None",
+        secure: true,
     });
-
     res.json({ success: true, message: "Logged out" });
 };
