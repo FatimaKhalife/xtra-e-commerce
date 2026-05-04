@@ -14,7 +14,7 @@ export default function Footer() {
 
   const [logged, setlogged] = useState(false);
   useEffect(() => {
-    fetch(`${API_URL}/me`, { credentials: "include" })
+    fetch(`${API_URL}/auth/me`, { credentials: "include" })
       .then(res => (res.json()))
       .then(data => setlogged(data.success))
   }, []);
