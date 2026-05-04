@@ -46,11 +46,23 @@ function Nav() {
       });
   }, []);
   const handleLogout = async () => {
-    await fetch(`${API_URL}/auth/logout`, { method: "POST", credentials: "include" });
-    localStorage.removeItem("logged");
-    setlogged(false);
+    try {
+      const res = await fetch(`${API_URL}/auth/logout`, {
+        method: "POST",
+        credentials: "include",
+      });
 
-  }
+      const data = await res.json();
+
+      if (data.success) {
+        localStorage.removeItem("logged");
+        setlogged(false);
+        window.location.href = "/login"; 
+      }
+    } catch (err) {
+      console.error("Logout failed", err);
+    }
+  };
 
 
   return (
@@ -99,7 +111,7 @@ function Nav() {
               <li><Link to="/contact">Contact</Link></li>
 
               {logged ?
-                   <li><a href="#" onClick={(e) => { e.preventDefault(); handleLogout(); }}>Logout</a></li>  :
+                <li><a href="#" onClick={(e) => { e.preventDefault(); handleLogout(); }}>Logout</a></li> :
                 <li><Link to="/login">Login</Link></li>
               }
               <li><a href="#" className="icon-link" onClick={() => setopen(true)}><GrSearch className="icon2" /></a></li>
