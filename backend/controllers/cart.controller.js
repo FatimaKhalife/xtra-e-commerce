@@ -75,7 +75,7 @@ export const AddToCart = async (req, res) => {
     );
 
     if (existing.length > 0) {
-        await dbPool.query(`update cart_items SET qty = ? WHERE cart_id = ? AND product_id = ?`, [qty, cartId, productId]);
+        await dbPool.query(`update cart_items SET qty = qty + ? WHERE cart_id = ? AND product_id = ?`, [qty, cartId, productId]);
 
     } else {
         await dbPool.query(`INSERT INTO cart_items (cart_id, product_id, qty) VALUES (?, ?, ?)`,
