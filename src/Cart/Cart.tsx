@@ -84,11 +84,20 @@ export default function Cart() {
     }, [])
 
     const fetchCart = async () => {
-        const res = await fetch(`${API_URL}/cart`, {
-            credentials: "include",
-        });
-        const data = await res.json();
-        setCart(data);
+        try {
+            const res = await fetch(`${API_URL}/cart`, {
+                credentials: "include",
+                cache: "no-store",
+            });
+            if (!res.ok) {
+                setCart([]);
+                return;
+            }
+            const data = await res.json();
+            setCart(Array.isArray(data) ? data : []);
+        } catch (err) {
+            setCart([]);
+        }
     };
 
     const empty = cart.length === 0;
