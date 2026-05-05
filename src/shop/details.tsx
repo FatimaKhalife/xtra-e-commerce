@@ -60,16 +60,19 @@ export default function Details() {
       return current;
     });
 
-  const AddtoCart = (id: number, qty: number | string) => {
+  const AddtoCart = async (id: number, qty: number | string) => {
     try {
-
-
-      fetch(`${API_URL}/cart/add`, {
+      const res = await fetch(`${API_URL}/cart/add`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
         body: JSON.stringify({ productId: id, qty: Number(qty) }),
-      })
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        alert("Added to cart ✅");
+      }
     } catch (err) {
       console.log("err fetching");
     }
@@ -154,7 +157,7 @@ export default function Details() {
             </button>
           </div>
           <div className="detail-btns">
-            <div className="details-addtocart" onClick={() => AddtoCart(product.id,quantity)}>
+            <div className="details-addtocart" onClick={() => AddtoCart(product.id, quantity)}>
               <RiShoppingCartLine />
               <a href="">Add to cart</a>
             </div>

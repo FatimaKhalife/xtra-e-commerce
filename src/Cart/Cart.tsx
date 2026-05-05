@@ -90,6 +90,8 @@ export default function Cart() {
                 cache: "no-store",
             });
             if (!res.ok) {
+                const text = await res.text();
+                console.error("Cart fetch error:", text);
                 setCart([]);
                 return;
             }

@@ -59,6 +59,7 @@ export const GetCartItems = async (req, res) => {
 export const AddToCart = async (req, res) => {
     const userId=req.userId;
     const {productId, qty } = req.body;
+    const quantity = Number(qty) || 1;
 
     let [cartRows]= await dbPool.query("Select * from carts where user_id=?",[userId]);
     
@@ -75,14 +76,15 @@ export const AddToCart = async (req, res) => {
     );
 
     if (existing.length > 0) {
-        await dbPool.query(`update cart_items SET qty = qty + ? WHERE cart_id = ? AND product_id = ?`, [qty, cartId, productId]);
+        await dbPool.query(`update cart_items SET qty = qty + ? WHERE cart_id = ? AND product_id = ?`, [quantity, cartId, productId]);
 
     } else {
         await dbPool.query(`INSERT INTO cart_items (cart_id, product_id, qty) VALUES (?, ?, ?)`,
-            [cartId, productId, qty]
+            [cartId, productId, quantity]
         );
 
     }
+    console.log("USER ID:", req.userId);
     res.json({ success: true, message: "Added to cart" });
 }
 
@@ -108,7 +110,7 @@ export const DecreaseQty = async (req, res) => {
     await dbPool.query(
         `update cart_items ci 
         JOIN carts c on ci.cart_id=c.id
-        SET ci.qty = GREATEST (ci.qty -1,1) where ci.product_id=? AND c.user_id `, [productId, userId]
+        SET ci.qty = GREATEST (ci.qty -1,1) where ci.product_id=? AND c.user_id = ? `, [productId, userId]
     );
 
     res.json({ message: "Quantity Decreased" });
