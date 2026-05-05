@@ -1,7 +1,7 @@
 import { dbPool } from "../config/db.js";
 import bcrypt from "bcryptjs";
 import crypto from "crypto";
-import { resend } from "../config/email.js";
+// import { resend } from "../config/email.js";
 import { generateToken } from "../utils/generateToken.js";
 import { sendAuthCookie } from "../utils/sendCookie.js";
 import { OAuth2Client } from "google-auth-library";
