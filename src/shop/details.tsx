@@ -69,6 +69,7 @@ export default function Details() {
         body: JSON.stringify({ productId: id, qty: Number(qty) }),
       });
       const data = await res.json();
+      console.log("ADD RESPONSE:", data);
 
       if (data.success) {
         alert("Added to cart ✅");
@@ -157,10 +158,10 @@ export default function Details() {
             </button>
           </div>
           <div className="detail-btns">
-            <div className="details-addtocart" onClick={() => AddtoCart(product.id, quantity)}>
+            <button onClick={() => AddtoCart(product.id, quantity)}>
               <RiShoppingCartLine />
-              <a href="">Add to cart</a>
-            </div>
+              Add to cart
+            </button>
             <div className="shop-heart">
               <HiHeart />
             </div>
