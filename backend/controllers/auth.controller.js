@@ -5,7 +5,7 @@ import crypto from "crypto";
 import { generateToken } from "../utils/generateToken.js";
 import { sendAuthCookie } from "../utils/sendCookie.js";
 import { OAuth2Client } from "google-auth-library";
-
+import { transporter } from "../config/email.js";
 const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 export const signup = async (req, res) => {
