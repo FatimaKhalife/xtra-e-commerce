@@ -1,11 +1,11 @@
 import { dbPool } from "../config/db.js";
 import bcrypt from "bcryptjs";
 import crypto from "crypto";
-// import { resend } from "../config/email.js";
+import { resend } from "../config/email.js";
 import { generateToken } from "../utils/generateToken.js";
 import { sendAuthCookie } from "../utils/sendCookie.js";
 import { OAuth2Client } from "google-auth-library";
-import { transporter } from "../config/email.js";
+
 const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 export const signup = async (req, res) => {
@@ -38,24 +38,13 @@ export const signup = async (req, res) => {
     // const link = `http://localhost:5000/auth/verify?token=${token}`;
     const link = `${process.env.BACKEND_URL}/auth/verify?token=${token}`;
 
-    // await resend.emails.send({
-    //     from: 'onboarding@resend.dev',
-    //     to: email,
-    //     subject: "Verify your email",
-    //     html: `<p>Hello ${name}, please verify:</p><a href="${link}">Verify Email</a>`
-    // });
-    try {
-        const info = await transporter.sendMail({
-            from: `"Xtra Shop" <${process.env.EMAIL_USER}>`,
-            to: email,
-            subject: "Verify your email",
-            html: `<a href="${link}">Verify Email</a>`,
-        });
+    await resend.emails.send({
+        from: 'onboarding@resend.dev',
+        to: email,
+        subject: "Verify your email",
+        html: `<p>Hello ${name}, please verify:</p><a href="${link}">Verify Email</a>`
+    });
 
-        console.log("Email sent:", info.response);
-    } catch (err) {
-        console.error("Email error:", err);
-    }
     res.json({ success: true, message: "Check your email to verify." });
 
 };

@@ -1,31 +1,12 @@
-import nodemailer from "nodemailer";
+import { Resend } from 'resend';
 
-// TRANSPORTER
-export const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true,
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-    },
-});
+export const resend = new Resend(process.env.RESEND_API_KEY);
 
-// VERIFY CONNECTION
-transporter.verify((error) => {
-    if (error) {
-        console.log("SMTP ERROR:", error);
-    } else {
-        console.log("SMTP READY");
-    }
-});
-
-// SEND MAIL
 export const sendMail = async ({ to, subject, text }) => {
-    await transporter.sendMail({
-        from: `"Xtra Shop" <${process.env.EMAIL_USER}>`,
-        to,
-        subject,
-        text,
-    });
+  await resend.emails.send({
+    from: 'onboarding@resend.dev',
+    to: to,
+    subject,
+    text
+  });
 };
