@@ -79,9 +79,10 @@ input[type=number]::-webkit-outer-spin-button {
 .details-addtocart{
     background-color: rgb(236, 27, 27);
     padding: 10px;
-    margin-bottom:10px ;
-    height: 20px;
-    width: 100px;
+    /* margin-bottom:10px ; */
+    /* height: 20px;
+    width: 100px; */
+    border:none;
     display: flex;
     gap: 5px;
     justify-content: center;
