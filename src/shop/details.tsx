@@ -158,7 +158,7 @@ export default function Details() {
             </button>
           </div>
           <div className="detail-btns">
-            <button onClick={() => AddtoCart(product.id, quantity)}>
+            <button className="details-addtocart" onClick={() => AddtoCart(product.id, quantity)}>
               <RiShoppingCartLine />
               Add to cart
             </button>
