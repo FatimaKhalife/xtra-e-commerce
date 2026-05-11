@@ -23,6 +23,7 @@ function Nav() {
   const [open, setopen] = useState(false);
   const [rightopen, setrightopen] = useState(false);
   const [logged, setlogged] = useState(false);
+  const [mobileMenu, setMobileMenu] = useState(false);
 
   useEffect(() => {
     fetch(`${API_URL}/auth/me`, { credentials: "include" })
@@ -57,7 +58,7 @@ function Nav() {
       if (data.success) {
         localStorage.removeItem("logged");
         setlogged(false);
-        window.location.href = "/login"; 
+        window.location.href = "/login";
       }
     } catch (err) {
       console.error("Logout failed", err);
@@ -80,9 +81,15 @@ function Nav() {
             <TfiEmail className="navicon" />
             <p>Info@xtra.industrial</p>
           </div>
+          
 
           <nav>
-            <ul>
+
+            <div className="mobile-toggle" onClick={() => setMobileMenu(!mobileMenu)}>
+              {mobileMenu ? <IoClose className="icontry"/> : <IoMenu className="icontry"/>}
+            </div>
+
+            <ul className={mobileMenu ? "nav-links active" : "nav-links"}>
               <li><Link to="/">Home</Link></li>
               <li><Link to="/aboutus">About</Link></li>
               {/* <li><a href="#">Services</a></li>
@@ -90,7 +97,11 @@ function Nav() {
 
 
               <li className="dropdown">
-                <li><Link to="/projects">Projects <FaChevronDown className="icon3" /></Link></li>
+                <li>
+                  <Link to="/projects">
+                    Projects <FaChevronDown className="icon3" />
+                  </Link>
+                </li>
 
                 <ul className="dropdown-menu">
                   <Link to="/projects">Projects</Link>
@@ -114,8 +125,11 @@ function Nav() {
                 <li><a href="#" onClick={(e) => { e.preventDefault(); handleLogout(); }}>Logout</a></li> :
                 <li><Link to="/login">Login</Link></li>
               }
-              <li><a href="#" className="icon-link" onClick={() => setopen(true)}><GrSearch className="icon2" /></a></li>
-              <li><a href="#" className="icon-link" onClick={() => setrightopen(true)}><IoMenu className="icon2" /></a></li>
+              <div className="links">
+                <li><a href="#" className="icon-link" onClick={() => setopen(true)}><GrSearch className="icon2" /></a></li>
+                <li><a href="#" className="icon-link" onClick={() => setrightopen(true)}><IoMenu className="icon2" /></a></li>
+              </div>
+
             </ul>
 
           </nav>
