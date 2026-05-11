@@ -40,7 +40,81 @@
     
  
 }
+.pluscount{
+    color: red;
+    font-size: 2rem;
+}
+
 .count{
     font-size: 70px;
   
+}
+
+@media (max-width: 900px){
+    .count{
+      font-size: 35px;
+    }
+     .pluscount{
+        font-size: 1.6rem;
+     }
+    .stats-sections{
+        width: 150px;
+    }
+     .stats-sections h4{
+        font-size: 16px;
+        padding: 20px 0;
+        
+     }
+}
+@media (max-width: 800px){
+     .left-stats h1{
+        font-size: 30px;
+     }
+     .stats-cont{
+         margin-top: -60px;
+        }
+}
+@media (max-width: 700px){
+    .count{
+      font-size: 30px;
+    }
+    .stats-sections{
+        width: 110px;
+    }
+     .stats-sections h4{
+        font-size: 13px;
+        padding: 15px 0 ;
+     }
+     .pluscount{
+        font-size: 1rem;
+     }
+     .left-stats h1{
+        font-size: 20px;
+     }
+     .stats-cont{
+         margin-top: -30px;
+        }
+}
+
+@media (max-width: 600px){
+    .count{
+      font-size: 20px;
+    }
+    .stats-sections{
+        width: 90px;
+    }
+     .stats-sections h4{
+        padding: 10px 0;
+        font-size: 11px;
+     }
+     .pluscount{
+        font-size: 0.8rem;
+     }
+     .left-stats h1{
+        font-size: 15px;
+     }
+     .left-stats{
+
+       padding: 25px;
+    }
 }
