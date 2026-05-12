@@ -57,7 +57,7 @@ function Home() {
       />
       <Partners />
       <Consult />
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }

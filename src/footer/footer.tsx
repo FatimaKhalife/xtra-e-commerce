@@ -86,10 +86,7 @@ export default function Footer() {
           </div>
        
         </div>
-           {logged ? (<button className="btn2-3" onClick={HandleLogout}>logout</button>) : 
-           (  <Link to={`/login`} ><button className="btn2-3">login</button></Link>)}
-              
-
+         
 
       </div>
 
