@@ -16,7 +16,9 @@ import projectroutes from "./routes/project.routes.js";
 import contactusroutes from "./routes/conactus.routes.js";
 
 const app = express();
-
+app.get("/", (req, res) => {
+  res.send("Backend is running");
+});
 app.use(
     cors({
     origin: process.env.CLIENT_URL,
