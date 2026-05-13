@@ -23,7 +23,7 @@ app.use(
     credentials: true,
     })
 );
-
+console.log("APP FILE STARTED");
 app.use(express.json());
 app.use(cookieParser());
 
