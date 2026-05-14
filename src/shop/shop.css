@@ -109,12 +109,9 @@ background-color: #1a1a1a;
 }
 
 .shop-addtocart{
-    background-color: rgb(236, 27, 27);
-    padding: 10px;
-    margin-bottom:10px ;
-    width: 100px;
     position: absolute;
     text-align: center;
+    font-size: 17px;
     display: flex;
     color: white;
     gap: 5px;
@@ -123,7 +120,7 @@ background-color: #1a1a1a;
     transform: translate(-50%);
     text-align: center;
     visibility: hidden;
-    transition: background-color 0.3s ease;
+  
 }
 .shop-content:hover .shop-addtocart{
     visibility: visible;

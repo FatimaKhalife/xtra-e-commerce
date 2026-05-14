@@ -14,7 +14,7 @@ import { PiArrowBendDoubleUpRightBold } from "react-icons/pi";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 import { API_URL } from "../config";
-
+import { AddtoCart } from "./AddtoCart";
 import Review from "./review";
 
 type Product = {
@@ -60,32 +60,7 @@ export default function Details() {
       return current;
     });
 
-  const AddtoCart = async (id: number, qty: number | string) => {
-    try {
-      const authRes = await fetch(`${API_URL}/auth/me`, { credentials: "include" });
-      const authData = await authRes.json();
-      
-      if (!authData.success) {
-        window.location.href = "/login";
-        return;
-      }
-      const res = await fetch(`${API_URL}/cart/add`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify({ productId: id, qty: Number(qty) }),
-      });
-      const data = await res.json();
-      console.log("ADD RESPONSE:", data);
-
-      if (data.success) {
-        alert("Added to cart ✅");
-      }
-    } catch (err) {
-      console.log("err fetching");
-    }
-  }
-
+ 
   const handleminus = () =>
     setquantity((prev) => {
       const current = Number(prev);

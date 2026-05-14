@@ -9,23 +9,23 @@ import { RiShoppingCartLine } from "react-icons/ri";
 import { MdArrowDropDown } from "react-icons/md";
 import { Link } from "react-router-dom";
 import Pagination from "../Pagination";
-
-type Product =  {
-    id: number;
-    name: string;
-    price: number;
-    image: string;
-    images__json: string[];
-    category:string;
-    SKU: string;
-    Status: number;
-    Tags__json: string[];
-    Weight: number;
-    Dimensions: string;
-    Product_year: number;
-    Product_manual: string;
-    Refundable: string;
-  };
+import { AddtoCart } from "./AddtoCart";
+type Product = {
+  id: number;
+  name: string;
+  price: number;
+  image: string;
+  images__json: string[];
+  category: string;
+  SKU: string;
+  Status: number;
+  Tags__json: string[];
+  Weight: number;
+  Dimensions: string;
+  Product_year: number;
+  Product_manual: string;
+  Refundable: string;
+};
 function Shop1() {
   const [products, setProducts] = useState<Product[]>([]);
   const [hovered1, sethovered1] = useState(false);
@@ -57,15 +57,15 @@ function Shop1() {
     setIsOpen(false);
   };
   useEffect(() => {
-  fetch(`${API_URL}/products`)
-    .then((res) => res.json())
-    .then((data) => {
-      setProducts(data);
-    })
-    .catch((err) => {
-      console.error("Error fetching products:", err);
-    });
-}, []);
+    fetch(`${API_URL}/products`)
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data);
+      })
+      .catch((err) => {
+        console.error("Error fetching products:", err);
+      });
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event: Event) => {
@@ -82,7 +82,7 @@ function Shop1() {
 
   return (
     <div className="shop">
-    
+
       <div className="prod-arr">
         <div className="shop-svg">
           <svg
@@ -395,14 +395,14 @@ function Shop1() {
           )}
         </div>
       </div>
-   
+
       <div className="shop-grid" style={{ gridTemplateColumns: grid1 }}>
         {currentproduct.map((product, index) => (
           <div key={index}>
             <Link to={`/product/${product.id}`} >
               <div className="shop-content">
                 <div className="shop-img">
-                  <img src={product.image}/>
+                  <img src={product.image} />
 
                   <div className="shop-left">
                     <div className="shop-h1">
@@ -462,10 +462,24 @@ function Shop1() {
                       </div>
                     </div>
                   </div>
-                  <div className="shop-addtocart">
+                  <button className="details-addtocart shop-addtocart" onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    AddtoCart(product.id, 1)
+
+                  }} >
+                    <RiShoppingCartLine />
+                    Add to cart
+                  </button>
+                  {/* <div className="shop-addtocart" onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    AddtoCart(product.id, 1)
+
+                  }} >
                     <RiShoppingCartLine />
                     <a href="">Add to cart</a>
-                  </div>
+                  </div> */}
 
                   <div className="shop-price">
                     <p>{product.price}</p>
@@ -513,10 +527,10 @@ function Shop1() {
         </button>
       </div> */}
       <Pagination
-  currentPage={currentpage}
-  totalPages={totalpages}
-  onPageChange={setcurrentpage}
-/>
+        currentPage={currentpage}
+        totalPages={totalpages}
+        onPageChange={setcurrentpage}
+      />
     </div>
   );
 }
