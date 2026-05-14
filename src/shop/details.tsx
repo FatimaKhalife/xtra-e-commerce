@@ -62,6 +62,13 @@ export default function Details() {
 
   const AddtoCart = async (id: number, qty: number | string) => {
     try {
+      const authRes = await fetch(`${API_URL}/auth/me`, { credentials: "include" });
+      const authData = await authRes.json();
+      
+      if (!authData.success) {
+        window.location.href = "/login";
+        return;
+      }
       const res = await fetch(`${API_URL}/cart/add`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
