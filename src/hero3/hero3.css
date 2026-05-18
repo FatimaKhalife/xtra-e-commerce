@@ -101,3 +101,34 @@ padding: 10px 18px;
 font-size:24px;
   
  }
+ @media (max-width:955px){
+  .hero3-in p {
+  font-size:18px;
+
+
+  
+}
+ .hero3-in h3{
+font-size:18px;
+  
+ }
+ }
+
+  @media (max-width:750px){
+  .hero3-in p {
+  font-size:15px;
+}
+ .hero3-in h3{
+font-size:14px;
+  
+ }
+ }
+   @media (max-width:600px){
+  .hero3-in p {
+  font-size:11px;
+}
+ .hero3-in h3{
+font-size:11px;
+  
+ }
+ }

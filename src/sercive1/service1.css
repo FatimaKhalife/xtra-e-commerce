@@ -10,7 +10,6 @@
 }
 .service{
     height: 450px;
-
    
 }
 .content{
@@ -65,4 +64,29 @@
 
 .btn:hover{
     background-position: bottom;
+}
+@media (max-width: 600px) {
+    .container-grid{
+         grid-template-columns: repeat(2,1fr);
+        }
+    .service-img{
+        width: 200px;
+        
+    }
+    .service{
+        height: 320px;
+    }
+    .btn{
+        font-size: 0.8rem;
+    }
+    .service-icon{
+        
+        width: 100px;
+    
+    }
+    .service-icon img{
+        width: 50%;
+    }
+
+    
 }

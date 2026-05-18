@@ -35,3 +35,9 @@
     background-position: bottom;
     color: white;
 }
+@media (max-width:620px){
+    .consult-info h2{
+        font-size: medium;
+
+    }
+}

@@ -103,6 +103,10 @@
     .stats-sections{
         width: 90px;
     }
+    .stats-cont{
+        margin-top: -190px;
+
+}
      .stats-sections h4{
         padding: 10px 0;
         font-size: 11px;
@@ -117,4 +121,5 @@
 
        padding: 25px;
     }
+
 }
