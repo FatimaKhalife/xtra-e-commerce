@@ -112,6 +112,9 @@ font-size:24px;
 font-size:18px;
   
  }
+ .hero3-grid{
+  width: 83%;
+ }
  }
 
   @media (max-width:750px){
@@ -122,6 +125,9 @@ font-size:18px;
 font-size:14px;
   
  }
+  .hero3-grid{
+  width: 90%;
+ }
  }
    @media (max-width:600px){
   .hero3-in p {
@@ -131,4 +137,5 @@ font-size:14px;
 font-size:11px;
   
  }
+ 
  }

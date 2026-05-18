@@ -33,11 +33,11 @@ function Stats() {
             <div className="all">
                     <div>
                         <div className="stats-sections">
-                            <span><Counter target={130} /><FaPlus style={{ color: 'red', fontSize: "2rem" }} /></span>
+                            <span><Counter target={130} /><FaPlus className="pluscount" /></span>
                             <h4>HAPPY CLIENTS</h4>
                         </div>
                         <div className="stats-sections">
-                            <span><Counter target={57} /><TbLetterK style={{ color: 'red', fontSize: "4rem" }} /></span>
+                            <span><Counter target={57} /><TbLetterK className="pluscount" /></span>
                             <h4>WORKERS</h4>
                         </div>
                     </div>
@@ -48,7 +48,7 @@ function Stats() {
                             <h4>FACTORIES</h4>
                         </div>
                         <div className="stats-sections">
-                            <span><Counter target={425} /><FaPlus style={{ color: 'red', fontSize: "2rem" }} /></span>
+                            <span><Counter target={425} /><FaPlus className="pluscount"/></span>
                             <h4>PROJECTS</h4>
                         </div>
                     </div>

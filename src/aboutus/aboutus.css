@@ -28,7 +28,7 @@
 }
 
 .history img{
-    width: 230px;
+    width: 100%;
 }
 
 .history ul{
@@ -64,7 +64,7 @@ transform: scale(1.2);
 }
 
 .m img{
-    width: 150px;
+    width: 100%;
 
 }
 .history.mission .history-info{
@@ -92,6 +92,10 @@ transform: scale(1.2);
     line-height: 20px;
     padding: 0;
 }
+
+
+
+
 
 .hiring{
     background-color: #1D1D1D;
@@ -219,7 +223,45 @@ background-color: transparent;
    
 }
 .about-info img{
-    width: 300px;
+    width: 120%;
 }
 
 
+@media (max-width:900px){
+    .history{
+         width: 90%;
+    }
+    .all {
+        padding: 30px;
+    }
+    .about-info {
+        width: 90%;
+   
+}
+
+}
+
+@media (max-width:650px){
+    .history{
+         flex-direction: column;
+    }
+    .history-info{
+        width: 95%;
+        text-align: center;
+        padding-bottom: 20px;
+    }
+    .history.mission .history-info{
+        width: 85%;
+    }
+    .about-info{
+        flex-direction: column;
+        text-align: center;
+    }
+    .about-info img{
+        width: 80%;
+
+    }
+
+
+
+}
