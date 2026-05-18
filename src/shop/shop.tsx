@@ -42,8 +42,12 @@ function Shop1() {
     startIndex,
     startIndex + productsperpage
   );
+  const getInitialGrid = () =>
+    window.innerWidth <= 720 ? "repeat(2,1fr)" : "repeat(3,1fr)";
 
-  const [grid1, setgrid1] = useState("repeat(3,1fr)");
+  const [grid1, setgrid1] = useState(getInitialGrid);
+
+
 
   const proddrop = [6, 16, 32, 48, 128];
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -56,6 +60,7 @@ function Shop1() {
     setproductnb(prod);
     setIsOpen(false);
   };
+
   useEffect(() => {
     fetch(`${API_URL}/products`)
       .then((res) => res.json())
@@ -79,7 +84,17 @@ function Shop1() {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
-
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 720) {
+        setgrid1("repeat(2,1fr)");
+      } else {
+        setgrid1("repeat(3,1fr)"); 
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   return (
     <div className="shop">
 

@@ -215,3 +215,62 @@ background-color: #1a1a1a;
     justify-content: center;
 
 }
+@media (max-width:1060px){
+
+    .shop-grid{
+        padding: 50px;
+        gap: 20px;
+    }
+
+    .shop-addtocart, .shop-price p, .shop-heart, .shop-compare, .shop-search {
+        font-size: 16px;
+    }
+    .shop-heart, .shop-compare, .shop-search{
+    
+       padding: 11px;
+    }
+
+}
+
+@media (max-width:880px){
+
+    .shop-addtocart {
+        font-size: 14px;
+    }
+
+
+}
+@media (max-width:805px){
+      .shop-grid{
+        padding: 30px;
+        
+    }
+    .shop-addtocart, .shop-price p{
+        font-size: 12px;
+    }
+    .shop-heart, .shop-compare, .shop-search{
+        font-size: 12px;
+       padding: 13px;
+    }
+ 
+
+}
+
+@media (max-width:720px){
+ .shop-addtocart, .shop-price p{
+        font-size: 17px;
+    }
+    .shop-heart, .shop-compare, .shop-search{
+        font-size: 17px;
+      
+    }
+}
+@media (max-width:604px){
+ .shop-addtocart, .shop-price p{
+        font-size: 12px;
+    }
+    .shop-heart, .shop-compare, .shop-search{
+        font-size: 13px;
+      
+    }
+}
