@@ -24,48 +24,7 @@ type ProjectRow = {
 };
 
 
-// const projects = [
-//   {
-//     title: "INDUSTRIAL",
-//     subtitle: "CNC MACHINERY",
-//     img: '	https://xtratheme.com/elementor/factory/wp-content/uploads/sites/8/2019/09/f1.jpg',
-//   },
-//   {
-//     title: "COMMERCIAL",
-//     subtitle: "MACHINERY & GEAR PRODUCTION ",
-//     img: '	https://xtratheme.com/elementor/factory/wp-content/uploads/sites/8/2019/09/f2.jpg',
-//   }, {
-//     title: "FACTORY",
-//     subtitle: "FACTORY IS SAFE & SECURE",
-//     img: '	https://xtratheme.com/elementor/factory/wp-content/uploads/sites/8/2019/09/f8.jpg',
-//   },
-//   {
-//     title: "INDUSTIAL",
-//     subtitle: "PETRO INDUSTRY EQUIPMENT",
-//     img: 'https://xtratheme.com/elementor/factory/wp-content/uploads/sites/8/2019/09/f7.jpg'
-//   },
-//   {
-//     title: "Commercial",
-//     subtitle: "WELDING AND LASER CUT",
-//     img: 'https://xtratheme.com/elementor/factory/wp-content/uploads/sites/8/2019/09/f7.jpg'
-//   }
-//   ,
-//   {
-//     title: "INDUSTIAL",
-//     subtitle: "Monitoring Room",
-//     img: 'https://xtratheme.com/elementor/factory/wp-content/uploads/sites/8/2019/09/f7.jpg'
-//   },
-//   {
-//     title: "Factory",
-//     subtitle: "Aircraft Jet Turbine",
-//     img: 'https://xtratheme.com/elementor/factory/wp-content/uploads/sites/8/2019/09/f7.jpg'
-//   },
-//   {
-//     title: "COMMERIAL",
-//     subtitle: "Car Assembly line",
-//     img: 'https://xtratheme.com/elementor/factory/wp-content/uploads/sites/8/2019/09/f7.jpg'
-//   }
-// ]
+
 export default function Projects() {
   const [project,setp]=useState<ProjectRow[]>([]);
  
