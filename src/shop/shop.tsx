@@ -42,6 +42,7 @@ function Shop1() {
     startIndex,
     startIndex + productsperpage
   );
+  const [ismobile, setismobile] = useState(window.innerWidth <= 720);
   const getInitialGrid = () =>
     window.innerWidth <= 720 ? "repeat(2,1fr)" : "repeat(3,1fr)";
 
@@ -84,13 +85,12 @@ function Shop1() {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth <= 720) {
-        setgrid1("repeat(2,1fr)");
-      } else {
-        setgrid1("repeat(3,1fr)"); 
-      }
+      const mobile = window.innerWidth <= 720;
+      setismobile(mobile);
+      setgrid1(mobile ? "repeat(2,1fr)" : "repeat(3,1fr)");
     };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -99,7 +99,7 @@ function Shop1() {
     <div className="shop">
 
       <div className="prod-arr">
-        <div className="shop-svg">
+        {!ismobile &&(<div className="shop-svg">
           <svg
             width={40}
             height={40}
@@ -391,7 +391,7 @@ function Shop1() {
             />
           </svg>
         </div>
-
+)}
         <div className="prod-nb" ref={dropdownRef}>
           <button
             onClick={toggleDown}
